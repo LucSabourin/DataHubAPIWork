@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>
+            Power BI Interface
+        </title>
+    </head>
+    <div class="container" id="header">
+        <div class="row">
+            <div class="col">
+                <p>
+                    Power BI Dataset Builder Interface
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="container" id="power bi form">
+        <div class="row">
+            <div class="col">
+                <form method="POST" action="/sources/powerbi/query">
+                    <div class="form-group">
+                        <label for="keys">
+                            Catalogue Keys to Select
+                        </label>
+                        <input class="form-control" id="keys" name="keys" value>
+                    </div>
+                    <div class="form-group">
+                        <label for="dsname">
+                            Dataset Name for Power BI
+                        </label>
+                        <input class="form-control" id="dsname" name="dsname" value>
+                    </div>
+                    <div class="form-group">
+                        <!--<input id="relationships" name="relationships" type="checkbox" value="y">-->
+                        <label for="relationships">
+                            Field Name for Dataset Relationship
+                        </label>
+                        <input class="form-control" id="relationships" name="relationships" value>
+                    </div>
+                    <div class="form-group">
+                        <input class="btn btn-primary form-control" id="submit" type="submit" value="Execute Query">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</html>
