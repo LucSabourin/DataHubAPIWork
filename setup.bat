@@ -1,6 +1,6 @@
-set PgSQLLogin=team04
-set PgSQLPassword=changeme
-set pgSQLServer=pgsql-01
+set PgSQLLogin=*****
+set PgSQLPassword=*****
+set pgSQLServer=*****
 python -m venv env
 CALL env\scripts\activate.bat
 python -m pip install --upgrade pip

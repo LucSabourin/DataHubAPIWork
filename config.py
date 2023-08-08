@@ -5,20 +5,20 @@ _pgSqlLogin = os.getenv('PgSQLLogin')
 _pgSqlPword = os.getenv('PgSQLPassword')
 _pgSqlServer = os.getenv('PgSQLServer')
 
-vcdsPgSqlAlchemy = {
+clientAPgSqlAlchemy = {
     'login': _pgSqlLogin,
     'pword': _pgSqlPword,
     'server': _pgSqlServer,
-    'dbName': 'vcds',
+    'dbName': 'clientA',
     'port': '5432',
     'sqlDriver': 'postgresql+psycopg2',
 }
 
-hrmapPgSqlAlchemy = {
+clientBPgSqlAlchemy = {
     'login': _pgSqlLogin,
     'pword': _pgSqlPword,
     'server': _pgSqlServer,
-    'dbName': 'hrmapping_newer',
+    'dbName': 'clientBping_newer',
     'port': '5432',
     'sqlDriver': 'postgresql+psycopg2',
 }
@@ -30,4 +30,4 @@ cache = '/'.join([ROOTDIR, 'cache'])
 staging = '/'.join([cache, 'staging'])
 
 if __name__ == '__main__':
-    print(vcdsPgSqlAlchemy)
+    print(clientAPgSqlAlchemy)
