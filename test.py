@@ -2,7 +2,7 @@ from datamgmt.excel import readExcel, DataFrame
 from datamgmt.dataframes import getDfSql, jsonifyDf, storeDfSql
 import json
 
-from config import vcdsPgSqlAlchemy, hrmapPgSqlAlchemy ,ROOTDIR
+from config import clientAPgSqlAlchemy, clientBPgSqlAlchemy ,ROOTDIR
 from resources import cacheIncoming
 
 def testDir():
@@ -13,41 +13,37 @@ def testPost(key : str, fileName : str):
     tableName = key
 
     dfs = readExcel(path=fileName)
-    storeDfSql(df=dfs, tblName=tableName, kwargs=vcdsPgSqlAlchemy)
+    storeDfSql(df=dfs, tblName=tableName, kwargs=clientAPgSqlAlchemy)
 
 catalogTemp = [
-    {'key': 'someCatalogKey', 'cred': vcdsPgSqlAlchemy},
-    {'key': 'someOtherCatalogKey', 'cred': vcdsPgSqlAlchemy},
-    {'key': 'BIRT', 'cred': vcdsPgSqlAlchemy},
-    {'key': 'SWE', 'cred': vcdsPgSqlAlchemy},
-    {'key': 'FinancialInfo', 'cred': vcdsPgSqlAlchemy},
-    {'key': 'FinancialActual', 'cred': vcdsPgSqlAlchemy},
-    {'key': 'FinancialExpected', 'cred': vcdsPgSqlAlchemy},
-    {'key': 'FinancialStats', 'cred': vcdsPgSqlAlchemy},
-    {'key': 'posting', 'cred': hrmapPgSqlAlchemy},
-    {'key': 'position', 'cred': hrmapPgSqlAlchemy},
-    {'key': 'pay_rate', 'cred': hrmapPgSqlAlchemy},
-    {'key': 'pay_scale', 'cred': hrmapPgSqlAlchemy},
-    {'key': 'org_budget', 'cred': hrmapPgSqlAlchemy},
-    {'key': 'org', 'cred': hrmapPgSqlAlchemy},
+    {'key': 'someCatalogKey', 'cred': clientAPgSqlAlchemy},
+    {'key': 'someOtherCatalogKey', 'cred': clientAPgSqlAlchemy},
+    {'key': 'FinancialInfo', 'cred': clientAPgSqlAlchemy},
+    {'key': 'FinancialActual', 'cred': clientAPgSqlAlchemy},
+    {'key': 'FinancialExpected', 'cred': clientAPgSqlAlchemy},
+    {'key': 'FinancialStats', 'cred': clientAPgSqlAlchemy},
+    {'key': 'posting', 'cred': clientBPgSqlAlchemy},
+    {'key': 'position', 'cred': clientBPgSqlAlchemy},
+    {'key': 'pay_rate', 'cred': clientBPgSqlAlchemy},
+    {'key': 'pay_scale', 'cred': clientBPgSqlAlchemy},
+    {'key': 'org_budget', 'cred': clientBPgSqlAlchemy},
+    {'key': 'org', 'cred': clientBPgSqlAlchemy},
 ]
 
 def testGet(key : str) -> str:
     catalogTemp = [
-        {'key': 'someCatalogKey', 'cred': vcdsPgSqlAlchemy},
-        {'key': 'someOtherCatalogKey', 'cred': vcdsPgSqlAlchemy},
-        {'key': 'BIRT', 'cred': vcdsPgSqlAlchemy},
-        {'key': 'SWE', 'cred': vcdsPgSqlAlchemy},
-        {'key': 'FinancialInfo', 'cred': vcdsPgSqlAlchemy},
-        {'key': 'FinancialActual', 'cred': vcdsPgSqlAlchemy},
-        {'key': 'FinancialExpected', 'cred': vcdsPgSqlAlchemy},
-        {'key': 'FinancialStats', 'cred': vcdsPgSqlAlchemy},
-        {'key': 'posting', 'cred': hrmapPgSqlAlchemy},
-        {'key': 'position', 'cred': hrmapPgSqlAlchemy},
-        {'key': 'pay_rate', 'cred': hrmapPgSqlAlchemy},
-        {'key': 'pay_scale', 'cred': hrmapPgSqlAlchemy},
-        {'key': 'org_budget', 'cred': hrmapPgSqlAlchemy},
-        {'key': 'org', 'cred': hrmapPgSqlAlchemy},
+        {'key': 'someCatalogKey', 'cred': clientAPgSqlAlchemy},
+        {'key': 'someOtherCatalogKey', 'cred': clientAPgSqlAlchemy},
+        {'key': 'FinancialInfo', 'cred': clientAPgSqlAlchemy},
+        {'key': 'FinancialActual', 'cred': clientAPgSqlAlchemy},
+        {'key': 'FinancialExpected', 'cred': clientAPgSqlAlchemy},
+        {'key': 'FinancialStats', 'cred': clientAPgSqlAlchemy},
+        {'key': 'posting', 'cred': clientBPgSqlAlchemy},
+        {'key': 'position', 'cred': clientBPgSqlAlchemy},
+        {'key': 'pay_rate', 'cred': clientBPgSqlAlchemy},
+        {'key': 'pay_scale', 'cred': clientBPgSqlAlchemy},
+        {'key': 'org_budget', 'cred': clientBPgSqlAlchemy},
+        {'key': 'org', 'cred': clientBPgSqlAlchemy},
     ]
 
     tableName = None
@@ -73,12 +69,12 @@ if __name__ == '__main__':
     if type(dfs) == list:
         strings = []
         for num, df in enumerate(dfs):
-            storeDfSql(df=df, tblName='-'.join([tableName, str(num)]), kwargs=vcdsPgSqlAlchemy)
-            df = getDfSql(tableName, kwargs=vcdsPgSqlAlchemy)
+            storeDfSql(df=df, tblName='-'.join([tableName, str(num)]), kwargs=clientAPgSqlAlchemy)
+            df = getDfSql(tableName, kwargs=clientAPgSqlAlchemy)
             strings.append(jsonifyDf(df))
     elif type(dfs) == DataFrame:
-        storeDfSql(df=dfs, tblName=tableName, kwargs=vcdsPgSqlAlchemy)
-        df = getDfSql(tableName, kwargs=vcdsPgSqlAlchemy)
+        storeDfSql(df=dfs, tblName=tableName, kwargs=clientAPgSqlAlchemy)
+        df = getDfSql(tableName, kwargs=clientAPgSqlAlchemy)
         strings = jsonifyDf(df)
     
     print(strings)
